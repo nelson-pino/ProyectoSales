@@ -8,7 +8,7 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Bienvenido al Proyecto APP-SALES!" 
+        <Label Text="Bienvenido al Proyecto APP-SALES! - 2020" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
     </StackLayout>
