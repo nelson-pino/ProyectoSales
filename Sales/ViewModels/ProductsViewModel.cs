@@ -26,7 +26,7 @@
 
         private async void LoadProducts()
         {
-            var response = await this.apiservice.GetList<Product>("http://server-etiqueta:8080", "/Api", "/Products");
+            var response = await this.apiservice.GetList<Product>("http://192.168.10.11:8080", "/Api", "/Products");
             if (!response.IsSuccess) 
             {
                 await Application.Current.MainPage.DisplayAlert("Error",response.Message,"Accept");

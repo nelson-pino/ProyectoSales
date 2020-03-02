@@ -45,7 +45,7 @@ namespace Sales.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != product.productID)
+            if (id != product.ProductID)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace Sales.API.Controllers
             db.Products.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.productID }, product);
+            return CreatedAtRoute("DefaultApi", new { id = product.ProductID }, product);
         }
 
         // DELETE: api/Products/5
@@ -113,7 +113,7 @@ namespace Sales.API.Controllers
 
         private bool ProductExists(int id)
         {
-            return db.Products.Count(e => e.productID == id) > 0;
+            return db.Products.Count(e => e.ProductID == id) > 0;
         }
     }
 }
