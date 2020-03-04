@@ -5,12 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Sales.Views.ProductsPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Productos">
     <ContentPage.Content>
         <StackLayout 
-            BindingContext="{Binding Products}">
+            BindingContext="{Binding Products}"
+            Padding="5">
             <ListView 
-                ItemsSource="{Binding Products}">
+                ItemsSource="{Binding Products}"
+                HasUnevenRows="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -23,6 +29,11 @@
                                     FontAttributes="Bold"
                                     Grid.Column="0"
                                     Text="{Binding Description}">
+                                </Label>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Price, StringFormat='{0:C2}'}"
+                                    HorizontalOptions="End">
                                 </Label>
                             </Grid>
                         </ViewCell>
