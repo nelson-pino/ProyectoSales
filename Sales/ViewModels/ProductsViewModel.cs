@@ -36,11 +36,19 @@
         private async void LoadProducts()
         {
             this.IsRefreshing = true;
-            var response = await this.apiservice.GetList<Product>("http://192.168.10.11:8080", "/Api", "/Products");
+             var connection = await this.apiservice.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Advertencia del Sistema", connection.Message, "Aceptar");
+                return;
+            }
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiservice.GetList<Product>(url, "/Api", "/Products");
             if (!response.IsSuccess) 
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error",response.Message,"Accept");
+                await Application.Current.MainPage.DisplayAlert("Advertencia del Sistema",response.Message,"Aceptar");
                 return;
             }
             var list = (List<Product>)response.Result;
